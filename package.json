@@ -1,0 +1,13 @@
+{
+  "name": "NodeJS-MongoDBGuide",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Artem711/NodeJS-MongoDBGuide.git",
+  "author": "Artem Moshnin <tap.kap.tap@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^8.2.1",
+    "mongoose": "^5.11.4",
+    "nodemon": "^2.0.6"
+  }
+}
