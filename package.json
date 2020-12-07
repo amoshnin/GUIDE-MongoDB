@@ -5,7 +5,12 @@
   "repository": "https://github.com/Artem711/NodeJS-MongoDBGuide.git",
   "author": "Artem Moshnin <tap.kap.tap@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
   "dependencies": {
+    "apollo-server": "^2.19.0",
+    "graphql": "^15.4.0",
     "mocha": "^8.2.1",
     "mongoose": "^5.11.4",
     "nodemon": "^2.0.6"
