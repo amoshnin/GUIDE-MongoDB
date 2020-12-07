@@ -6,7 +6,8 @@
   "author": "Artem Moshnin <tap.kap.tap@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "test": "nodemon --exec 'mocha -R min'"
   },
   "dependencies": {
     "apollo-server": "^2.19.0",
