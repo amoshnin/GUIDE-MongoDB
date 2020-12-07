@@ -14,6 +14,6 @@ before((done) => {
 })
 
 beforeEach((done) => {
-  const { users, comments, blogposts } = mongoose.connection.collections
-  users.drop(() => done())
+  const { users, articles, comments } = mongoose.connection.collections
+  users.drop(() => articles.drop(() => comments.drop(() => done())))
 })

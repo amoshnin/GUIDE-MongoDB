@@ -3,40 +3,43 @@ const UserModel = require("../src/models/UserModel")
 
 // -----------------------------------------------------------------------------------
 
-const name = "Joe"
+const USER_NAME = "Joe"
 
-const postTitle = "PostTitle"
-const newPostTitle = "NewPost"
+const POST_TITLE = "PostTitle"
+const NEW_POST_TITLE = "NewPost"
 
 describe("Validating records", () => {
   it("Create subdocument", async () => {
-    const user = new UserModel({ name, posts: [{ title: postTitle }] })
+    const user = new UserModel({
+      name: USER_NAME,
+      posts: [{ title: POST_TITLE }],
+    })
     await user.save()
 
-    const foundUser = await UserModel.findOne({ name })
-    assert(foundUser.posts[0].title === postTitle)
+    const foundUser = await UserModel.findOne({ name: USER_NAME })
+    assert(foundUser.posts[0].title === POST_TITLE)
   })
 
   it("Add subdocument", async () => {
-    const user = new UserModel({ name, posts: [] })
+    const user = new UserModel({ name: USER_NAME, posts: [] })
     await user.save()
 
     const foundUser = await UserModel.findById(user.id)
-    foundUser.posts.push({ title: newPostTitle })
+    foundUser.posts.push({ title: NEW_POST_TITLE })
     await foundUser.save()
 
     const reFoundUser = await UserModel.findById(user.id)
-    assert(reFoundUser.posts[0].title === newPostTitle)
+    assert(reFoundUser.posts[0].title === NEW_POST_TITLE)
   })
 
   it("Remove subdocuments", async () => {
     // create user
-    const user = new UserModel({ name, posts: [] })
+    const user = new UserModel({ name: USER_NAME, posts: [] })
     await user.save()
 
     // add posts to user
     const foundUser = await UserModel.findById(user.id)
-    foundUser.posts.push({ title: postTitle }, { title: newPostTitle })
+    foundUser.posts.push({ title: POST_TITLE }, { title: NEW_POST_TITLE })
     await foundUser.save()
 
     // remove post from user
@@ -46,6 +49,6 @@ describe("Validating records", () => {
 
     // verify if true
     const finFoundUser = await UserModel.findById(user.id)
-    assert(finFoundUser.posts[0].title === newPostTitle)
+    assert(finFoundUser.posts[0].title === NEW_POST_TITLE)
   })
 })

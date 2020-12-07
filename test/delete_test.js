@@ -3,7 +3,7 @@ const UserModel = require("../src/models/UserModel")
 
 // -----------------------------------------------------------------------------------
 
-const name = "Joe"
+const USER_NAME = "Joe"
 
 // -----------------------------------------------------------------------------------
 describe("Delete a user", () => {
@@ -12,13 +12,13 @@ describe("Delete a user", () => {
   const validatorHelp = async (useId) => {
     const user = useId
       ? await UserModel.findById(joe.id)
-      : await UserModel.findOne({ name: name })
+      : await UserModel.findOne({ name: USER_NAME })
 
     assert(user === null)
   }
 
   beforeEach(async () => {
-    joe = new UserModel({ name: name })
+    joe = new UserModel({ name: USER_NAME })
     await joe.save()
   })
 
@@ -30,7 +30,7 @@ describe("Delete a user", () => {
 
   // --- MODEL CLASSES ----------------------------------------------------------------
   it("Class => (deleteOne)", async () => {
-    await UserModel.deleteOne({ name: name }) // delete one document
+    await UserModel.deleteOne({ name: USER_NAME }) // delete one document
     await validatorHelp()
   })
 
@@ -40,7 +40,7 @@ describe("Delete a user", () => {
   })
 
   it("Class => (deleteMany)", async () => {
-    await UserModel.deleteMany({ name: name }) // delete many documents
+    await UserModel.deleteMany({ name: USER_NAME }) // delete many documents
     await validatorHelp()
   })
 })

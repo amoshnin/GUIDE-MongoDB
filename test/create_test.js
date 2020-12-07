@@ -1,15 +1,15 @@
 const assert = require("assert")
-const Model = require("../src/models/UserModel")
+const UserModel = require("../src/models/UserModel")
 
 // -----------------------------------------------------------------------------------
 
-const name = "Joe"
+const USER_NAME = "Joe"
 
 // -----------------------------------------------------------------------------------
 describe("Creating record", () => {
   // --- MODEL CLASSES ------------------------------------------------------------------
   it("Save user => (save)", async () => {
-    const joe = new Model({ name: name })
+    const joe = new UserModel({ name: USER_NAME })
     await joe.save()
     assert(!joe.isNew)
   })
