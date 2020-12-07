@@ -15,7 +15,10 @@ const UserSchema = new Schema({
     required: [true, "Name is required"],
   },
   posts: [PostSchema],
-  postCount: Number,
+})
+
+UserSchema.virtual("postCount").get(function () {
+  return this.posts.length
 })
 
 module.exports = model("User", UserSchema)

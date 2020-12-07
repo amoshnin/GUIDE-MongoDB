@@ -61,7 +61,7 @@ describe("Updating records", () => {
     validatorHelp(updatedValue)
   })
 
-  it("Class - increment post count by (+1) => ()", async () => {
+  xit("Class - increment post count by (+1) => ()", async () => {
     await UserModel.updateMany({ name: name }, { $inc: { postCount: 1 } })
     const user = await UserModel.findOne({ name: name })
     assert(user.postCount === 1)
