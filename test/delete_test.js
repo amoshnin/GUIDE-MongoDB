@@ -1,11 +1,15 @@
 const assert = require("assert")
 const UserModel = require("../src/models/UserModel")
 
+// -----------------------------------------------------------------------------------
+
 const name = "Joe"
+
+// -----------------------------------------------------------------------------------
 describe("Delete a user", () => {
   let joe
 
-  const checkIfDeleted = async (useId) => {
+  const validatorHelp = async (useId) => {
     const user = useId
       ? await UserModel.findById(joe.id)
       : await UserModel.findOne({ name: name })
@@ -18,26 +22,25 @@ describe("Delete a user", () => {
     await joe.save()
   })
 
-  // --- MODEL INSTANCES ------------------------
-  it("Instance - => remove", async () => {
-    await joe.delete()
-    await checkIfDeleted()
+  // --- MODEL INSTANCES ----------------------------------------------------------------
+  it("Instance => (delete)", async () => {
+    await joe.delete() // delete specific reference
+    await validatorHelp()
   })
 
-  // --- MODEL CLASSES ------------------------
-  it("Class - => findAndRemove", async () => {
+  // --- MODEL CLASSES ----------------------------------------------------------------
+  it("Class => (deleteOne)", async () => {
     await UserModel.deleteOne({ name: name }) // delete one document
-    await checkIfDeleted()
+    await validatorHelp()
   })
 
-  it("Class - => findByIdAndRemove", async () => {
+  it("Class => (findByIdAndDelete)", async () => {
     await UserModel.findByIdAndDelete(joe.id) // delete one doc by id
-    await checkIfDeleted(true)
+    await validatorHelp(true)
   })
 
-  it("Class - => remove", async () => {
-    // Remove a bunch of records with some given criteria
+  it("Class => (deleteMany)", async () => {
     await UserModel.deleteMany({ name: name }) // delete many documents
-    await checkIfDeleted()
+    await validatorHelp()
   })
 })
