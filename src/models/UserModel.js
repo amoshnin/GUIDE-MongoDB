@@ -1,4 +1,5 @@
 const { model, Schema } = require("mongoose")
+const { SchemasConfig } = require("./config")
 
 const PostSchema = new Schema({
   title: String,
@@ -16,10 +17,11 @@ const UserSchema = new Schema({
   },
   posts: [PostSchema],
   likes: Number,
+  articles: [{ type: Schema.Types.ObjectId, ref: SchemasConfig.Article }],
 })
 
 UserSchema.virtual("postCount").get(function () {
   return this.posts.length
 })
 
-module.exports = model("User", UserSchema)
+module.exports = model(SchemasConfig.User, UserSchema)
