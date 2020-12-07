@@ -4,7 +4,6 @@ const UserModel = require("../src/models/UserModel")
 
 const name = "Joe"
 const name2 = "Alex"
-
 const initCount = 0
 
 // -----------------------------------------------------------------------------------

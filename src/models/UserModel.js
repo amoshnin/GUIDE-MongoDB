@@ -1,5 +1,10 @@
 const { model, Schema } = require("mongoose")
 
+const PostSchema = new Schema({
+  title: String,
+})
+
+// -- EXPORTED ----------------------------->
 const UserSchema = new Schema({
   name: {
     type: String,
@@ -9,6 +14,7 @@ const UserSchema = new Schema({
     },
     required: [true, "Name is required"],
   },
+  posts: [PostSchema],
   postCount: Number,
 })
 
