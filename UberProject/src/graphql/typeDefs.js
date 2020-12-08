@@ -2,12 +2,12 @@ const { gql } = require("apollo-server")
 
 module.exports = gql`
   type Query {
-    s: String!
+    getDrivers(lng: Float!, lat: Float!): [DriverModel]!
   }
   type Mutation {
-    createDriver(input: InputCreateDriver!): DriverSchema!
-    editDriver(id: String!, input: InputCreateDriver!): DriverSchema!
-    deleteDriver(id: String!): DriverSchema!
+    createDriver(input: InputCreateDriver!): DriverModel!
+    editDriver(id: String!, input: InputCreateDriver!): DriverModel!
+    deleteDriver(id: String!): DriverModel!
   }
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -15,13 +15,25 @@ module.exports = gql`
   # Inputs
   input InputCreateDriver {
     email: String!
+    geometry: InputGeoPoint
+  }
+
+  input InputGeoPoint {
+    type: String!
+    coordinates: [Float!]!
   }
 
   # Returns
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-  type DriverSchema {
+  type DriverModel {
     email: String!
     driving: Boolean!
+    geometry: GeoPointType!
+  }
+
+  type GeoPointType {
+    type: String!
+    coordinates: [Float!]!
   }
 `

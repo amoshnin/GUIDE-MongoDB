@@ -8,7 +8,26 @@ const DriverModel = require("../../../models/DriverModel")
 /////////////////////////////////////////////////////////////////////////////
 
 module.exports = {
-  Query: {},
+  Query: {
+    async getDrivers(_, { lng, lat }) {
+      const drivers = await DriverModel.find({
+        geometry: {
+          $near: {
+            $geometry: {
+              type: "Point",
+              coordinates: [lng, lat],
+            },
+            $maxDistance: 20001200,
+            $minDistance: 0,
+          },
+        },
+      })
+
+      console.log(drivers)
+      return drivers
+    },
+  },
+
   Mutation: {
     async createDriver(_, { input }) {
       const driver = new DriverModel(input)
