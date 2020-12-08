@@ -1,36 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import ReduxThunk from 'redux-thunk';
-import { Db, Server } from 'mongodb';
-import reducers from './reducers';
-import Routes from './router';
-import mongoose from 'mongoose';
-import './seeds';
+import React from "react"
+import ReactDOM from "react-dom"
+import { createStore, applyMiddleware } from "redux"
+import { Provider } from "react-redux"
+import ReduxThunk from "redux-thunk"
+import reducers from "./reducers"
+import Routes from "./router"
+import mongoose from "mongoose"
+import "./seeds"
+import { MONGO_DB } from "../config"
 
-mongoose.Promise = Promise;
+import { ApolloServer } from "apollo-server"
+
+import typeDefs from "../database/graphql/typeDefs"
+import resolvers from "../database/graphql/resolvers"
+
+mongoose.Promise = Promise
 
 const App = () => {
-  const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+  const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
 
   return (
     <Provider store={store}>
       <Routes />
     </Provider>
-  );
-};
+  )
+}
 
-const db = new Db('upstar_music', new Server('localhost', 27017));
-db.open()
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+})
+
+mongoose
+  .connect(MONGO_DB, { useNewUrlParser: true })
   .then(() => {
-    window.db = db;
-    mongoose.connect('mongodb://localhost/upstar_music');
-      mongoose.connection
-        .once('open', () => {
-          ReactDOM.render(<App />, document.getElementById('root'));
-        })
-        .on('error', (error) => {
-          console.warn('Warning', error);
-        });
-  });
+    console.log("Success connection")
+    server.listen({ port: 5000 }).then((res) => {
+      console.log(`Server running at ${res.url}`)
+      ReactDOM.render(<App />, document.getElementById("root"))
+    })
+  })
+  .catch((error) => console.log(error))

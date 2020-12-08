@@ -3,8 +3,8 @@ const { ApolloServer } = require("apollo-server")
 const mongoose = require("mongoose")
 
 // COMPONENTS IMPORTS //
-const typeDefs = require("./graphql/typeDefs")
-const resolvers = require("./graphql/resolvers")
+const typeDefs = require("../../Project/database/graphql/typeDefs")
+const resolvers = require("../../Project/database/graphql/resolvers")
 
 // CONFIG IMPORTS //
 const config = require("./config")

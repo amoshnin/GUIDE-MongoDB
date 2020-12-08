@@ -1,8 +1,7 @@
-const {app, BrowserWindow} = require('electron');
-let win
+const { app, BrowserWindow } = require("electron")
 
-app.on('ready', function() {
-  win = new BrowserWindow({width: 800, height: 600});
+app.on("ready", function () {
+  let window = new BrowserWindow({ width: 800, height: 600 })
 
-  win.loadURL(`file://${__dirname}/index.html`);
-});
+  window.loadURL(`file://${__dirname}/index.html`)
+})

@@ -1,67 +1,69 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
+import { MONGO_DB } from "./config"
 
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/
+;(function (modules) {
+  // webpackBootstrap
+  /******/ // The module cache
+  /******/ var installedModules = {} // The require function
 
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
+  /******/ /******/ function __webpack_require__(moduleId) {
+    /******/ // Check if module is in cache
+    /******/ if (installedModules[moduleId])
+      /******/ return installedModules[moduleId].exports // Create a new module (and put it into the cache)
 
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
+    /******/ /******/ var module = (installedModules[moduleId] = {
+      /******/ exports: {},
+      /******/ id: moduleId,
+      /******/ loaded: false,
+      /******/
+    }) // Execute the module function
 
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+    /******/ /******/ modules[moduleId].call(
+      module.exports,
+      module,
+      module.exports,
+      __webpack_require__
+    ) // Flag the module as loaded
 
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
+    /******/ /******/ module.loaded = true // Return the exports of the module
 
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
+    /******/ /******/ return module.exports
+    /******/
+  } // expose the modules object (__webpack_modules__)
 
+  /******/ /******/ __webpack_require__.m = modules // expose the module cache
 
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
+  /******/ /******/ __webpack_require__.c = installedModules // __webpack_public_path__
 
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
+  /******/ /******/ __webpack_require__.p = "/" // Load entry module and return exports
 
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+  /******/ /******/ return __webpack_require__(0)
+  /******/
+})(
+  /************************************************************************/
+  /******/ [
+    /* 0 */
+    /***/ function (module, exports, __webpack_require__) {
+      module.exports = __webpack_require__(1)
 
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ function(module, exports, __webpack_require__) {
+      /***/
+    },
+    /* 1 */
+    /***/ function (module, exports, __webpack_require__) {
+      "use strict"
 
-	module.exports = __webpack_require__(1);
+      var _mongodb = __webpack_require__(2)
 
+      var url = MONGO_DB
 
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
+      /***/
+    },
+    /* 2 */
+    /***/ function (module, exports) {
+      module.exports = require("mongodb")
 
-	'use strict';
-
-	var _mongodb = __webpack_require__(2);
-
-	var url = 'mongodb://localhost:27017/auth';
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	module.exports = require("mongodb");
-
-/***/ }
-/******/ ]);
+      /***/
+    },
+    /******/
+  ]
+)
