@@ -8,4 +8,15 @@ const ArtistModel = require("../../../models/ArtistModel")
  * @param {integer} limit How many records to return in the result set
  * @return {promise} A promise that resolves with the artists, count, offset, and limit
  */
-module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {}
+module.exports = async (
+  _,
+  { criteria, sortProperty, offset = 0, limit = 20 }
+) => {
+  const artists = await ArtistModel.find({})
+    .sort({ [sortProperty]: 1 })
+    .skip(offset)
+    .limit(limit)
+
+  const count = await ArtistModel.countDocuments()
+  return { artists, offset, limit, count }
+}

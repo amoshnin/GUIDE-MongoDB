@@ -2,8 +2,7 @@
 // # Queries
 const FindArtist = require("./Query/FindArtist")
 const SearchArtists = require("./Query/SearchArtists")
-const GetAgeRange = require("./Query/GetAgeRange")
-const GetYearsActiveRange = require("./Query/GetYearsActiveRange")
+const GetAgeRange = require("./Query/GetRanges")
 // # Mutations
 const CreateArtist = require("./Mutation/CreateArtist")
 const DeleteArtist = require("./Mutation/DeleteArtist")
@@ -17,8 +16,7 @@ module.exports = {
   Query: {
     FindArtist,
     SearchArtists,
-    GetAgeRange,
-    GetYearsActiveRange,
+    ...GetAgeRange,
   },
   Mutation: {
     CreateArtist,

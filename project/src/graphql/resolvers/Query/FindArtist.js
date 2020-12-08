@@ -19,6 +19,6 @@ module.exports = async (_, { id }) => {
   if (artist) {
     return artist
   } else {
-    throw new UserInputError("Artist with given 'id' not found")
+    throw new UserInputError("Artist not found")
   }
 }

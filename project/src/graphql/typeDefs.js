@@ -3,9 +3,14 @@ const { gql } = require("apollo-server")
 module.exports = gql`
   type Query {
     FindArtist(id: String!): ArtistType!
-    SearchArtists: [ArtistType]!
-    GetAgeRange: Int!
-    GetYearsActiveRange: Int!
+    SearchArtists(
+      criteria: ArtistInputType!
+      sortProperty: String!
+      offset: Int
+      limit: Int
+    ): ReturnSearchType!
+    GetAgeRange: ReturnYearsRangeType!
+    GetYearsActiveRange: ReturnYearsRangeType!
   }
   type Mutation {
     CreateArtist(input: ArtistInputType!): ArtistType!
@@ -23,6 +28,19 @@ module.exports = gql`
     age: Int!
     yearsActive: Int!
     genre: String!
+  }
+
+  # Returns
+  type ReturnSearchType {
+    artists: [ArtistType]!
+    count: Int!
+    offset: Int!
+    limit: Int!
+  }
+
+  type ReturnYearsRangeType {
+    min: Int!
+    max: Int!
   }
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # #
