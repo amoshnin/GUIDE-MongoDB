@@ -43,7 +43,7 @@ describe("Associations Test", () => {
     assert(resultUser.articles[0].title === ARTICLE_TITLE)
   })
 
-  it.only("Returns full relation graph", async () => {
+  it("Returns full relation graph", async () => {
     const resultUser = await UserModel.findOne({ name: USER_NAME }).populate({
       path: `${SchemasConfig.Article}s`.toLowerCase(),
       populate: {

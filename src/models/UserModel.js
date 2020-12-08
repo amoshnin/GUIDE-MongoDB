@@ -1,4 +1,4 @@
-const { model, Schema } = require("mongoose")
+const { Schema, model } = require("mongoose")
 const { SchemasConfig } = require("./config")
 
 const PostSchema = new Schema({
@@ -22,6 +22,13 @@ const UserSchema = new Schema({
 
 UserSchema.virtual("postCount").get(function () {
   return this.posts.length
+})
+
+UserSchema.pre("remove", async function () {
+  const article = model(SchemasConfig.Article)
+  // this === joe
+
+  await article.remove({ _id: { $in: this.articles } })
 })
 
 module.exports = model(SchemasConfig.User, UserSchema)
