@@ -1,4 +1,4 @@
-const Artist = require("../../../models/artist")
+const Artist = require("../../../models/ArtistModel")
 
 /**
  * Edits a single artist in the Artists collection

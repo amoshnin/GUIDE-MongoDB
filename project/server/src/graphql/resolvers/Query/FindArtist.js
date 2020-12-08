@@ -1,4 +1,11 @@
-const Artist = require("../../../models/artist")
+// PLUGINS IMPORTS //
+
+// MODELS IMPORTS //
+const Artist = require("../../../models/ArtistModel")
+
+// EXTRA IMPORTS //
+
+/////////////////////////////////////////////////////////////////////////////
 
 /**
  * Finds a single artist in the artist collection.

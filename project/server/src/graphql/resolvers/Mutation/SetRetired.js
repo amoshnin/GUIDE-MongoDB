@@ -1,4 +1,4 @@
-const Artist = require("../../../models/artist")
+const Artist = require("../../../models/ArtistModel")
 
 /**
  * Sets a group of Artists as retired

@@ -1,4 +1,4 @@
-const Artist = require("../../../models/artist")
+const Artist = require("../../../models/ArtistModel")
 
 /**
  * Deletes a single artist from the Artists collection

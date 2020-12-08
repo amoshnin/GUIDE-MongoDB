@@ -1,4 +1,4 @@
-const Artist = require("../../../models/artist")
+const Artist = require("../../../models/ArtistModel")
 
 /**
  * Finds the lowest and highest yearsActive of artists in the Artist collection
