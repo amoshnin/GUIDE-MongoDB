@@ -4,7 +4,7 @@ module.exports = gql`
   type Query {
     FindArtist(id: String!): ArtistType!
     SearchArtists(
-      criteria: ArtistInputType!
+      criteria: InputArtistSearchType
       sortProperty: String!
       offset: Int
       limit: Int
@@ -13,9 +13,9 @@ module.exports = gql`
     GetYearsActiveRange: ReturnYearsRangeType!
   }
   type Mutation {
-    CreateArtist(input: ArtistInputType!): ArtistType!
+    CreateArtist(input: InputArtistType!): ArtistType!
     DeleteArtist(id: String!): ArtistType!
-    EditArtist(id: String!, input: ArtistInputType!): ArtistType!
+    EditArtist(id: String!, input: InputArtistType!): ArtistType!
     SetNotRetired: String!
     SetRetired: String!
   }
@@ -23,11 +23,22 @@ module.exports = gql`
   # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
   # Inputs #
-  input ArtistInputType {
+  input InputArtistType {
     name: String!
     age: Int!
     yearsActive: Int!
     genre: String!
+  }
+
+  input InputArtistSearchType {
+    name: String
+    age: InputYearsRangeType
+    yearsActive: InputYearsRangeType
+  }
+
+  input InputYearsRangeType {
+    min: Int!
+    max: Int!
   }
 
   # Returns
