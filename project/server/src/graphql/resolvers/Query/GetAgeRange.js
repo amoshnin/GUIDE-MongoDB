@@ -1,4 +1,4 @@
-const Artist = require("../models/artist")
+const Artist = require("../../../models/artist")
 
 /**
  * Finds the lowest and highest age of artists in the Artist collection
