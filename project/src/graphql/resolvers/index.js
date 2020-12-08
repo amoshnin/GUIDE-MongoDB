@@ -7,8 +7,7 @@ const GetAgeRange = require("./Query/GetRanges")
 const CreateArtist = require("./Mutation/CreateArtist")
 const DeleteArtist = require("./Mutation/DeleteArtist")
 const EditArtist = require("./Mutation/EditArtist")
-const SetNotRetired = require("./Mutation/SetNotRetired")
-const SetRetired = require("./Mutation/SetRetired")
+const ToggleRetirement = require("./Mutation/ToggleRetirement")
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -22,7 +21,6 @@ module.exports = {
     CreateArtist,
     DeleteArtist,
     EditArtist,
-    SetNotRetired,
-    SetRetired,
+    ToggleRetirement,
   },
 }

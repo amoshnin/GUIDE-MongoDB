@@ -16,8 +16,7 @@ module.exports = gql`
     CreateArtist(input: InputArtistType!): ArtistType!
     DeleteArtist(id: String!): ArtistType!
     EditArtist(id: String!, input: InputArtistType!): ArtistType!
-    SetNotRetired: String!
-    SetRetired: String!
+    ToggleRetirement(ids: [String]!, status: Boolean!): [String]!
   }
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # #
