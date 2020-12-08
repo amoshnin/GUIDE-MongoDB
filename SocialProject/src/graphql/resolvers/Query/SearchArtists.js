@@ -18,7 +18,7 @@ module.exports = async (
     .skip(offset)
     .limit(limit)
 
-  const count = artists.length
+  const count = ArtistModel.find(buildQuery(criteria)).countDocuments()
   return { artists, offset, limit, count }
 }
 
