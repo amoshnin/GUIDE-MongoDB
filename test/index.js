@@ -3,14 +3,12 @@ const config = require("../src/config")
 
 mongoose.Promise = global.Promise
 
-before((done) => {
-  mongoose
-    .connect(config.MONGO_DB, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      useFindAndModify: false,
-    })
-    .then(() => done())
+before(async () => {
+  await mongoose.connect(config.MONGO_DB, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  })
 })
 
 beforeEach((done) => {
