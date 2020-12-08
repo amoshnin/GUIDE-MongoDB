@@ -9,8 +9,8 @@ module.exports = gql`
   }
   type Mutation {
     CreateArtist(input: ArtistInputType!): ArtistType!
-    DeleteArtist: ArtistType!
-    EditArtist: ArtistType!
+    DeleteArtist(id: String!): ArtistType!
+    EditArtist(id: String!, input: ArtistInputType!): ArtistType!
     SetNotRetired: String!
     SetRetired: String!
   }
@@ -30,15 +30,15 @@ module.exports = gql`
   # Artist
   type ArtistType {
     name: String!
-    image: String!
     age: Int!
     yearsActive: Int!
     genre: String!
-    website: String!
-    netWorth: Int!
-    labelName: String!
-    retired: Boolean!
-    albums: [AlbumType]!
+    image: String
+    website: String
+    netWorth: Int
+    labelName: String
+    retired: Boolean
+    albums: [AlbumType]
   }
 
   # Album
