@@ -21,7 +21,7 @@ module.exports = gql`
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-  # Inputs #
+  # Inputs
   input InputArtistType {
     name: String!
     age: Int!
